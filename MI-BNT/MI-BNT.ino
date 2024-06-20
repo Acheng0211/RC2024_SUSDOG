@@ -30,9 +30,9 @@
 #define Sgn43 1
 #define Bias43 0.366519
 
-#define SPD_LIMIT 30
-#define CUR_LIMIT 20
-#define KP 0.5
+#define SPD_LIMIT 15
+#define CUR_LIMIT 5
+#define KP 0.2
 #define KI 0.0158
 #define DelayMS 150
 
@@ -56,7 +56,7 @@ BLA::Matrix<3, 3> ww;
 
 BLA::Matrix<6, 1> S1 = {1, 0, 0, 0, 0, 0};
 BLA::Matrix<6, 1> S2 = {0, 1, 0, 0, 0, 0};
-BLA::Matrix<6, 1> S3 = {sbt, cbt, 0, l3 * cbt, -l3 * cbt, -l1 * sbt};
+BLA::Matrix<6, 1> S3 = {sbt, cbt, 0, l3 *cbt, -l3 *cbt, -l1 *sbt};
 
 const int CAN_INT_PIN = 2;
 void setup()
@@ -70,44 +70,44 @@ void setup()
 
   // 位置置0
 
-      motor_pos_zero(11);
-      delay(50);
-      motor_pos_zero(12);
-      delay(50);
-      motor_pos_zero(13);
-      delay(50);
-    motor_pos_zero(21);
-    delay(50);
-    motor_pos_zero(22);
-    delay(50);
-    motor_pos_zero(23);
-    delay(50);
-//  motor_pos_zero(31);
-//  delay(50);
-//  motor_pos_zero(32);
-//  delay(50);
-//  motor_pos_zero(33);
-//  delay(50);
-//  motor_pos_zero(41);
-//  delay(50);
-//  motor_pos_zero(42);
-//  delay(50);
-//  motor_pos_zero(43);
-//  delay(50);
+  //   motor_pos_zero(11);
+  //   delay(50);
+  //   motor_pos_zero(12);
+  //   delay(50);
+  //   motor_pos_zero(13);
+  //   delay(50);
+  //  motor_pos_zero(21);
+  // delay(50);
+  // motor_pos_zero(22);
+  // delay(50);
+  // motor_pos_zero(23);k
+  // delay(50);
+  motor_pos_zero(31);
+  delay(50);
+  motor_pos_zero(32);
+  delay(50);
+  motor_pos_zero(33);
+  delay(50);
+  motor_pos_zero(41);
+  delay(50);
+  motor_pos_zero(42);
+  delay(50);
+  motor_pos_zero(43);
+  delay(50);
 
   //  使能id电机
-  motor_enable(11);
-  delay(50);
-  motor_enable(12);
-  delay(50);
-  motor_enable(13);
-  delay(50);
-  motor_enable(21);
-  delay(50);
-  motor_enable(22);
-  delay(50);
-  motor_enable(23);
-  delay(50);
+  // motor_enable(11);
+  // delay(50);
+  // motor_enable(12);
+  // delay(50);
+  // motor_enable(13);
+  // delay(50);
+  // motor_enable(21);
+  // delay(50);
+  // motor_enable(22);
+  // delay(50);
+  // motor_enable(23);
+  // delay(50);
   motor_enable(31);
   delay(50);
   motor_enable(32);
@@ -122,18 +122,18 @@ void setup()
   delay(50);
 
   // 电机运行模式 电机canid 模式值 1位置模式2速度模式 3 电流模式0运控模式
-       motor_mode(13, 1);
-       delay(50);
-       motor_mode(11, 1);
-       delay(50);
-       motor_mode(12, 1);
-       delay(50);
-    motor_mode(23, 1);
-    delay(50);
-    motor_mode(21, 1);
-    delay(50);
-    motor_mode(22, 1);
-    delay(50);
+  //      motor_mode(13, 1);
+  //      delay(50);
+  //      motor_mode(11, 1);
+  //      delay(50);
+  //      motor_mode(12, 1);
+  //      delay(50);
+  //   motor_mode(23, 1);
+  //   delay(50);
+  //   motor_mode(21, 1);
+  //   delay(50);
+  //   motor_mode(22, 1);
+  //   delay(50);
   motor_mode(31, 1);
   delay(50);
   motor_mode(32, 1);
@@ -147,18 +147,18 @@ void setup()
   motor_mode(43, 1);
   delay(50);
 
-  motor_pow_cmd(11, SPD_LIMIT, CUR_LIMIT, KP, KI);  //id, speed_lim, current_lim, kp, ki
-  delay(50);
-  motor_pow_cmd(12, SPD_LIMIT, CUR_LIMIT, KP, KI);
-  delay(50);
-  motor_pow_cmd(13, SPD_LIMIT, CUR_LIMIT, KP, KI);
-  delay(50);
-  motor_pow_cmd(21, SPD_LIMIT, CUR_LIMIT, KP, KI);
-  delay(50);
-  motor_pow_cmd(22, SPD_LIMIT, CUR_LIMIT, KP, KI);
-  delay(50);
-  motor_pow_cmd(23, SPD_LIMIT, CUR_LIMIT, KP, KI);
-  delay(50);
+  // motor_pow_cmd(11, SPD_LIMIT, CUR_LIMIT, KP, KI);  //id, speed_lim, current_lim, kp, ki
+  // delay(50);
+  // motor_pow_cmd(12, SPD_LIMIT, CUR_LIMIT, KP, KI);
+  // delay(50);
+  // motor_pow_cmd(13, SPD_LIMIT, CUR_LIMIT, KP, KI);
+  // delay(50);
+  // motor_pow_cmd(21, SPD_LIMIT, CUR_LIMIT, KP, KI);
+  // delay(50);
+  // motor_pow_cmd(22, SPD_LIMIT, CUR_LIMIT, KP, KI);
+  // delay(50);
+  // motor_pow_cmd(23, SPD_LIMIT, CUR_LIMIT, KP, KI);
+  // delay(50);
   motor_pow_cmd(31, SPD_LIMIT, CUR_LIMIT, KP, KI);
   delay(50);
   motor_pow_cmd(32, SPD_LIMIT, CUR_LIMIT, KP, KI);
@@ -181,8 +181,7 @@ BLA::Matrix<3, 3> times3(double t)
   BLA::Matrix<3, 3> I;
   I = {t, 0, 0,
        0, t, 0,
-       0, 0, t
-      };
+       0, 0, t};
   return I;
 }
 
@@ -193,8 +192,7 @@ BLA::Matrix<4, 4> times4(double t)
   I = {t, 0, 0, 0,
        0, t, 0, 0,
        0, 0, t, 0,
-       0, 0, 0, t
-      };
+       0, 0, 0, t};
   return I;
 }
 
@@ -336,7 +334,6 @@ BLA::Matrix<3> FR = {0.0, 0.0, 0.0};
 BLA::Matrix<3> RL = {0.0, 0.0, 0.0};
 BLA::Matrix<3> RR = {0.0, 0.0, 0.0};
 
-
 void loop()
 {
   pos = 0.07 * sin(t);
@@ -354,39 +351,48 @@ void loop()
   RR = RL;
   FL = RL;
   FR = RL;
-  Serial << "RL: " << RL << '\n';
+  // Serial << "RL: " << RL << '\n';
+  Serial.print("RL1: ");
+  Serial.print(RL(0));
+  Serial.print(" ");
+  Serial.print("RL2: ");
+  Serial.print(RL(1));
+  Serial.print(" ");
+   Serial.print("RL3: ");
+  Serial.print(RL(2));
+  Serial.println(" ");
 
   long now = micros();
-  Serial.println(now - last);
+  // Serial.println(now - last);
   last = now;
   if (ErrorFlag == 0)
   {
-            motor_pos_cmd(11, FL(0) * Sgn11);
-            delayMicroseconds(DelayMS);
-            motor_pos_cmd(12, FL(1) * Sgn12);
-            delayMicroseconds(DelayMS);
-            if (FL(2) > -1.2 - Bias13 && FL(2) < -Bias13)
-            {
-              motor_pos_cmd(13, Sgn13*(FL(2) + Bias13));
-              delayMicroseconds(DelayMS);
-            }
-            else
-            {
-              Serial.println("q13 out of range");
-            }
-        motor_pos_cmd(21, FR(0) * Sgn21);
-        delayMicroseconds(DelayMS);
-        motor_pos_cmd(22, FR(1) * Sgn22);
-        delayMicroseconds(DelayMS);
-        if (FR(2) < -Bias23 && FR(2) > -Bias23 - 1.2)
-        {
-          motor_pos_cmd(23, Sgn23 * (FR(2) + Bias23));
-          delayMicroseconds(DelayMS);
-        }
-        else
-        {
-          Serial.println("q23 out of range");
-        }
+    motor_pos_cmd(11, FL(0) * Sgn11);
+    delayMicroseconds(DelayMS);
+    motor_pos_cmd(12, FL(1) * Sgn12);
+    delayMicroseconds(DelayMS);
+    if (FL(2) > -1.2 - Bias13 && FL(2) < -Bias13)
+    {
+      motor_pos_cmd(13, Sgn13 * (FL(2) + Bias13));
+      delayMicroseconds(DelayMS);
+    }
+    else
+    {
+      Serial.println("q13 out of range");
+    }
+    motor_pos_cmd(21, FR(0) * Sgn21);
+    delayMicroseconds(DelayMS);
+    motor_pos_cmd(22, FR(1) * Sgn22);
+    delayMicroseconds(DelayMS);
+    if (FR(2) < -Bias23 && FR(2) > -Bias23 - 1.2)
+    {
+      motor_pos_cmd(23, Sgn23 * (FR(2) + Bias23));
+      delayMicroseconds(DelayMS);
+    }
+    else
+    {
+      Serial.println("q23 out of range");
+    }
     motor_pos_cmd(31, RL(0) * Sgn31);
     delayMicroseconds(DelayMS);
     motor_pos_cmd(32, RL(1) * Sgn32);
